@@ -1,0 +1,227 @@
+---
+layout: "base.njk"
+---
+
+{% set recommendedCompany = rankings | find("isRecommended", true) %}
+{% set alsoCheckCompanies = rankings | filter("isAlsoCheck", true) %}
+{% set top7Companies = rankings | sort(false, false, 'rank') | slice(0, 7) %}
+
+<!-- 1. ファーストビュー -->
+<section class="fv">
+  <div class="container">
+    <h1 class="fv-catchphrase">【専門家が厳選】<br>失敗しない不動産投資会社の選び方</h1>
+    <p class="fv-subtext">最新データで比較！初心者でも安心して始められる優良企業ランキング</p>
+    {% if recommendedCompany %}
+      <a href="{{ recommendedCompany.ctaUrl }}" class="cta-button">
+        ランキング1位の会社を見る
+      </a>
+      <p class="cta-bonus">＼ {{ recommendedCompany.interviewBonus }} ／</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- 2. 今月のおすすめ不動産投資会社 -->
+{% if recommendedCompany %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">今月のおすすめ不動産投資会社</h2>
+    <div class="recommended-card">
+      <h3 class="card-title">{{ recommendedCompany.rank }}位：{{ recommendedCompany.name }}</h3>
+      <img src="{{ recommendedCompany.logoUrl }}" alt="{{ recommendedCompany.name }} ロゴ" class="card-logo" loading="lazy">
+      <p class="card-catchphrase">{{ recommendedCompany.catchphrase }}</p>
+      <a href="{{ recommendedCompany.ctaUrl }}" class="cta-button">
+        詳しく見てみる
+      </a>
+      <p class="cta-bonus">＼ {{ recommendedCompany.interviewBonus }} ／</p>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- 3. 併せてチェック -->
+{% if alsoCheckCompanies.length > 0 %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">併せてチェックしたい優良企業</h2>
+        <div class="alsocheck-grid">
+            {% for company in alsoCheckCompanies %}
+            <div class="alsocheck-card">
+                <h3 class="card-title">{{ company.rank }}位：{{ company.name }}</h3>
+                <img src="{{ company.logoUrl }}" alt="{{ company.name }} ロゴ" class="card-logo" loading="lazy">
+                <a href="{{ company.ctaUrl }}" class="cta-button">
+                    公式サイトへ
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- 4. 人気不動産会社TOP7 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">人気不動産投資会社TOP7</h2>
+    <p class="section-subtitle">項目をタップすると詳細が見られます。表は横にスクロールできます。</p>
+    <div class="ranking-table-wrapper">
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>会社名</th>
+            <th>初期費用</th>
+            <th>管理のしやすさ</th>
+            <th>入居率</th>
+            <th>所有物件エリア</th>
+            <th>面談特典</th>
+            <th>公式サイト</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for company in top7Companies %}
+          <tr>
+            <td>
+              <span class="rank-badge rank-{{ company.rank }}">{{ company.rank }}</span>
+              <p style="margin-top: 8px; font-weight: bold;">{{ company.name }}</p>
+              <img src="{{ company.logoUrl }}" alt="{{ company.name }} ロゴ" width="120" height="auto" loading="lazy" style="margin: 8px auto 0;">
+            </td>
+            <td>{{ company.initialCost }}</td>
+            <td>
+                <span class="evaluation-icon {% if company.manageability == '◎' %}good{% elif company.manageability == '〇' %}normal{% else %}bad{% endif %}">
+                    {{ company.manageability }}
+                </span>
+            </td>
+            <td><strong>{{ company.occupancyRate }}</strong></td>
+            <td>{{ company.area }}</td>
+            <td>{{ company.interviewBonus }}</td>
+            <td>
+              <a href="{{ company.ctaUrl }}" class="cta-button" style="font-size: 1rem; padding: 12px; margin: 0; min-width: 160px;">詳細を見る</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 不動産投資の豆知識 -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">不動産投資の豆知識</h2>
+        <!-- ここにコンテンツを追記 -->
+    </div>
+</section>
+
+<!-- 6. 初心者向け：不動産投資会社詳細セクション -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">初心者向け 不動産投資会社詳細</h2>
+    <p class="section-subtitle">気になる会社をタップして詳細情報をチェック！</p>
+    <div class="company-details-list">
+      {% for company in rankings %}
+      <details class="company-details-item" {% if company.rank == 1 %}open{% endif %}>
+        <summary class="company-details-summary">
+          <span>{{ company.rank }}位：{{ company.name }}</span>
+        </summary>
+        <div class="company-details-content">
+          <img src="{{ company.bannerUrl }}" alt="{{ company.name }} バナー" loading="lazy" style="margin-bottom: 24px; border-radius: var(--border-radius);">
+          <a href="{{ company.ctaUrl }}" class="cta-button">
+            無料相談を予約する
+          </a>
+          <p class="cta-bonus">＼ {{ company.interviewBonus }} ／</p>
+          
+          <h4 class="detail-section-title">おすすめポイント</h4>
+          <ul class="point-list">
+            {% for point in company.points %}
+              <li>{{ point }}</li>
+            {% endfor %}
+          </ul>
+
+          <h4 class="detail-section-title">詳細情報</h4>
+          <table class="detail-table">
+            <tr><th>所有物件エリア</th><td>{{ company.detailsTable.area }}</td></tr>
+            <tr><th>対象物件</th><td>{{ company.detailsTable.propertyType }}</td></tr>
+            <tr><th>入居率</th><td>{{ company.detailsTable.occupancyRate }}</td></tr>
+            <tr><th>投資額目安</th><td>{{ company.detailsTable.investmentAmount }}</td></tr>
+            <tr><th>資本金</th><td>{{ company.detailsTable.capital }}</td></tr>
+            <tr><th>従業員数</th><td>{{ company.detailsTable.employees }}</td></tr>
+            <tr><th>セミナー/相談</th><td>{{ company.detailsTable.seminar }}</td></tr>
+            <tr><th>実績</th><td>{{ company.detailsTable.trackRecord }}</td></tr>
+          </table>
+
+          <h4 class="detail-section-title">選ばれる3つの理由</h4>
+          <ul class="point-list">
+             {% for reason in company.reasons %}
+              <li>{{ reason }}</li>
+            {% endfor %}
+          </ul>
+
+          <h4 class="detail-section-title">強み</h4>
+          <p>{{ company.strength }}</p>
+
+          <h4 class="detail-section-title">口コミ・評判</h4>
+          {% for review in company.reviews %}
+          <div class="review-card">
+            <p>"{{ review.text }}"</p>
+            <p class="review-source">（引用元：{{ review.source }}）</p>
+          </div>
+          {% endfor %}
+
+          <a href="{{ company.ctaUrl }}" class="cta-button">
+            もう一度見てみる
+          </a>
+          <p class="cta-bonus">＼ {{ company.interviewBonus }} ／</p>
+
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- 7. よくある質問 -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">よくある質問</h2>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary class="faq-question">自己資金はいくらくらい必要ですか？</summary>
+                <div class="faq-answer">
+                    多くの会社では10万円から100万円程度を初期費用として提示していますが、フルローンを利用して自己資金0円から始められるケースもあります。詳細は各社の個別相談で確認することをおすすめします。
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">地方在住でも東京の物件に投資できますか？</summary>
+                <div class="faq-answer">
+                    はい、可能です。最近ではオンラインでの面談から契約まで完結できる会社がほとんどです。物件管理も全て委託できるため、お住まいの地域に関わらず人気の都心物件オーナーになることができます。
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- 8. よく読まれているコラム -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">よく読まれているコラム</h2>
+        <div class="column-grid">
+            {# collections.articles をループ処理 #}
+            {% for article in collections.articles | reverse | slice(0, 5) %}
+            <a href="{{ article.url }}" class="column-card">
+                <div class="column-card-img-wrapper">
+                    {# フロントマターの thumbnailUrl を使用 #}
+                    <img src="{{ article.data.thumbnailUrl }}" alt="" class="column-card-img" loading="lazy">
+                    <span class="column-card-category">{{ article.data.category }}</span>
+                </div>
+                <div class="column-card-body">
+                    {# フロントマターの title を使用 #}
+                    <h3 class="column-card-title">{{ article.data.title }}</h3>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- 9. 投資会社検索フォーム -->
+

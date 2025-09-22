@@ -1,0 +1,135 @@
+[
+  {
+    "id": "company-a",
+    "rank": 1,
+    "name": "未来エステート",
+    "logoUrl": "assets/images/logo-placeholder.png",
+    "isRecommended": true,
+    "isAlsoCheck": false,
+    "catchphrase": "初心者でも安心！アプリで始める新しい不動産投資",
+    "initialCost": "10万円〜",
+    "manageability": "◎",
+    "occupancyRate": "99.5%",
+    "area": "東京23区、横浜、川崎",
+    "interviewBonus": "Amazonギフト券5万円分",
+    "ctaUrl": "#",
+    "bannerUrl": "assets/images/banner-placeholder.png",
+    "points": [
+      "スマホアプリで管理が完結する手軽さ",
+      "厳選された都心の中古ワンルームマンション",
+      "購入後の手厚いサポート体制"
+    ],
+    "detailsTable": {
+      "area": "東京23区、横浜市、川崎市",
+      "propertyType": "中古ワンルームマンション",
+      "occupancyRate": "99.5%（2023年度実績）",
+      "investmentAmount": "10万円〜",
+      "capital": "1億円",
+      "employees": "150名",
+      "seminar": "オンラインセミナー・個別相談（毎日開催）",
+      "trackRecord": "創業以来15年、販売実績5,000戸以上"
+    },
+    "reasons": [
+      "独自のAI査定システムで将来性の高い物件を厳選しているから。",
+      "入居者募集からクレーム対応まで、全ての管理業務を代行してくれるから。",
+      "提携金融機関が多く、顧客に最適なローンを提案してくれるから。"
+    ],
+    "strength": "IT技術を駆使した効率的な物件管理と、初心者への分かりやすいサポートが強みです。特に、忙しい会社員の方でも手間をかけずに始められる点が評価されています。",
+    "reviews": [
+      {
+        "text": "アプリが本当に使いやすい。収支報告もリアルタイムで確認できるので、安心して任せられます。",
+        "source": "不動産投資マガジン"
+      },
+      {
+        "text": "担当の方が非常に親身で、初歩的な質問にも丁寧に答えてくれました。おかげで不安なくスタートできました。",
+        "source": "オーナーズボイス"
+      },
+      {
+        "text": "他の会社とも比較しましたが、紹介された物件の質と利回りのバランスが一番良かったです。",
+        "source": "投資家ブログ"
+      }
+    ]
+  },
+  {
+    "id": "company-b",
+    "rank": 2,
+    "name": "アーバンプロパティ",
+    "logoUrl": "assets/images/logo-placeholder.png",
+    "isRecommended": false,
+    "isAlsoCheck": true,
+    "catchphrase": "都心一等地。資産価値を追求するあなたへ",
+    "initialCost": "100万円〜",
+    "manageability": "〇",
+    "occupancyRate": "98.9%",
+    "area": "東京（港区、渋谷区、中央区）",
+    "interviewBonus": "書籍プレゼント",
+    "ctaUrl": "#",
+    "bannerUrl": "assets/images/banner-placeholder.png",
+    "points": [
+      "ポイント1", "ポイント2", "ポイント3"
+    ],
+    "detailsTable": { "area": "...", "propertyType": "...", "occupancyRate": "...", "investmentAmount": "...", "capital": "...", "employees": "...", "seminar": "...", "trackRecord": "..." },
+    "reasons": [ "理由1", "理由2", "理由3" ],
+    "strength": "強みテキスト",
+    "reviews": [
+      { "text": "口コミ1", "source": "引用元1" },
+      { "text": "口コミ2", "source": "引用元2" },
+      { "text": "口コミ3", "source": "引用元3" }
+    ]
+  },
+  {
+    "id": "company-c",
+    "rank": 3,
+    "name": "グローバルリンクス",
+    "logoUrl": "assets/images/logo-placeholder.png",
+    "isRecommended": false,
+    "isAlsoCheck": true,
+    "catchphrase": "地方高利回り物件ならお任せください",
+    "initialCost": "50万円〜",
+    "manageability": "〇",
+    "occupancyRate": "97.5%",
+    "area": "大阪、名古屋、福岡",
+    "interviewBonus": "QUOカード5000円分",
+    "ctaUrl": "#",
+    "bannerUrl": "assets/images/banner-placeholder.png",
+    "points": [
+      "ポイント1", "ポイント2", "ポイント3"
+    ],
+    "detailsTable": { "area": "...", "propertyType": "...", "occupancyRate": "...", "investmentAmount": "...", "capital": "...", "employees": "...", "seminar": "...", "trackRecord": "..." },
+    "reasons": [ "理由1", "理由2", "理由3" ],
+    "strength": "強みテキスト",
+    "reviews": [
+      { "text": "口コミ1", "source": "引用元1" },
+      { "text": "口コミ2", "source": "引用元2" },
+      { "text": "口コミ3", "source": "引用元3" }
+    ]
+  },
+  {
+    "id": "company-d",
+    "rank": 4,
+    "name": "J.P.RETURNS",
+    "logoUrl": "assets/images/logo-placeholder.png",
+    "isRecommended": false,
+    "isAlsoCheck": true,
+    "catchphrase": "販売から管理、売却までワンストップサポート",
+    "initialCost": "30万円〜",
+    "manageability": "◎",
+    "occupancyRate": "99.0%",
+    "area": "全国主要都市",
+    "interviewBonus": "オリジナルレポート",
+    "ctaUrl": "#",
+    "bannerUrl": "assets/images/banner-placeholder.png",
+    "points": [
+      "ポイント1", "ポイント2", "ポイント3"
+    ],
+    "detailsTable": { "area": "...", "propertyType": "...", "occupancyRate": "...", "investmentAmount": "...", "capital": "...", "employees": "...", "seminar": "...", "trackRecord": "..." },
+    "reasons": [ "理由1", "理由2", "理由3" ],
+    "strength": "強みテキスト",
+    "reviews": [
+      { "text": "口コミ1", "source": "引用元1" },
+      { "text": "口コミ2", "source": "引用元2" },
+      { "text": "口コミ3", "source": "引用元3" }
+    ]
+  }
+]
+

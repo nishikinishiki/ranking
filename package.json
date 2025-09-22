@@ -1,0 +1,17 @@
+{
+  "name": "11ty-real-estate-lp",
+  "version": "1.0.0",
+  "description": "A real estate investment ranking LP built with Eleventy.",
+  "main": ".eleventy.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "dependencies": {
+    "luxon": "^3.4.3"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
+

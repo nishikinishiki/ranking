@@ -1,0 +1,42 @@
+# .github/workflows/deploy.yml
+
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # mainブランチへのpushをトリガーにする
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # package.jsonで要求されるバージョンに合わせる
+          cache: 'npm'
+
+      # === ▼▼▼ ここが重要 ▼▼▼ ===
+      - name: Install dependencies 📦
+        run: npm ci # package-lock.jsonに基づき依存関係をインストール
+
+      - name: Build with Eleventy 🔨
+        run: npm run build # ここでeleventyコマンドが実行される
+
+      - name: Upload artifact ⬆️
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs # .eleventy.jsで指定した出力ディレクトリ
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4
